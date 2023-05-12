@@ -11,9 +11,18 @@ const getUserSettings = (): UserSettings | null => {
     return userSettings;
 };
 
-const login = (): Promise<void> => userManager.signinRedirect({}).catch(() => { });
+const login = (): Promise<void> => 
+    userManager.signinRedirect({}).then((user:any )=> {
+    localStorage.setItem(`oidc.user:${clientId}`,user);
+}).catch(() => { });
+
+const signinRedirectCallback = (callbackFunc :Function): Promise<void> => 
+userManager.signinRedirectCallback().then(() => {
+    if(callbackFunc) callbackFunc();
+});
 
 const isAuthenticated = (): boolean => {
+    debugger
     const userSettings = getUserSettings();
     if (userSettings === null) return false;
     return true;
@@ -22,4 +31,5 @@ const isAuthenticated = (): boolean => {
 export {
     login,
     isAuthenticated,
+    signinRedirectCallback,
 };

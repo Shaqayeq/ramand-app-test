@@ -1,13 +1,18 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate }  from "react-router-dom";
 import { AppDispatch } from "../store";
-import { login } from '../services/auth-service';
 import Logo from '../security-ramand.svg';
-import { changePasswordAction, changeUsernameAction } from "../features/user/user-slice";
+import { 
+  changePasswordAction, 
+  changeUsernameAction, 
+  setIsLoginUserAction
+} from "../features/user/user-slice";
 import "./login.css"
 
 const LoginPage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,6 +24,12 @@ const LoginPage: FC = () => {
   const changePassword =(password: string) =>{
     setPassword(password);
     dispatch(changePasswordAction(password));
+  }
+
+  const login = () => {
+    debugger;
+    dispatch(setIsLoginUserAction(true));
+    navigate('/list');
   }
 
   return (

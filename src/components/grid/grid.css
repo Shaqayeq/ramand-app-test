@@ -14,14 +14,14 @@
     font-size: 13px;
     text-align: center;
     direction: rtl;
-    line-height: 10px;
+    line-height: 15px;
     float: right;
     border-left: solid 1px #edeff2;
     color: #00b276;
     text-shadow: 0px 0px 0px;
     position: relative;
-    width: 300px;
-    height: 25px;
+    width: 45%;
+    height: 15px;
   }
 
   .item :nth-child(2){

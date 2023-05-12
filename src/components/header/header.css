@@ -18,3 +18,9 @@
     left: 10%;
     top: 20px;
 }
+.user-welcome {
+    position: absolute;
+    left: 35%;
+    direction: rtl;
+    top: 20px;
+}

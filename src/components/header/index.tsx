@@ -15,7 +15,7 @@ const HeaderPage = () => {
     return (
         <div className="header">
             <span className="total-span"> تعداد ردیف : {totalPage} </span>
-            <span className="total-span"> کاربر {username} به سیستم خوش آمدید </span>
+            <span className="user-welcome"> کاربر {username} به سیستم خوش آمدید </span>
             <input 
                 type="text" 
                 className="search-box" 
