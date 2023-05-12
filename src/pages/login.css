@@ -1,0 +1,41 @@
+.landing {
+    height: 100vh;
+    width: 100%;
+    color: #ffffff;
+    background-color: #010519;
+}
+  
+.logo-container {
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    direction: rtl;
+}
+  
+.logo-caption {
+  font-size: 36px;
+  margin: 20px;
+}
+
+.logo {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.input-box {
+  width: 400px;
+  margin: 10px 0;
+}
+
+.input-box input {
+  border: 1px solid gray;
+  color: black;
+}
+
+.btn-login {
+  width: 181px;
+  background-color: rebeccapurple;
+  margin-right: 18%;
+}

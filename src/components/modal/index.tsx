@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { GridDataModel } from "../../contract/grid-contract";
@@ -15,19 +15,26 @@ import {
     ModalOverlay,
 } from "@chakra-ui/react";
 
+import "./modal.css";
+
 const ModalPopup = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { showModal, selectedItem } = useSelector((state: RootState) => state.gridReducer);
-    const [title, setTitle] = useState(selectedItem?.title || "");
+    const [ selectedTitle, setSelectedTitle] = useState("");
 
     const closeModal = () => {
         dispatch(changeShowModalAction(false));
     }
 
     const save = () => {
-        const item = { ...selectedItem, title: title } as GridDataModel;
+        const item = { ...selectedItem, title: selectedTitle } as GridDataModel;
         dispatch(editSelectedItemAction(item));
+        closeModal();
     }
+
+    useEffect (()=> {
+        setSelectedTitle(selectedItem?.title || "");
+    }, [selectedItem?.title]);
 
     return (
         <Modal isOpen={showModal} onClose={closeModal} size="md">
@@ -35,7 +42,8 @@ const ModalPopup = () => {
             <ModalContent mt="40">
                 <ModalHeader>ویرایش کاربر {selectedItem?.userId}</ModalHeader>
                 <ModalBody>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <span className="modal-span">عنوان</span>
+                    <input type="text" className="modal-input" value={selectedTitle} onChange={(e) => setSelectedTitle(e.target.value)} />
                 </ModalBody>
                 <ModalFooter>
                     <button onClick={save} className="button" style={{ background: "green" }}>

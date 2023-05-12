@@ -11,9 +11,7 @@ const getUserSettings = (): UserSettings | null => {
     return userSettings;
 };
 
-const signinRedirect = (): void => {
-    userManager.signinRedirect({}).catch(() => { });
-};
+const login = (): Promise<void> => userManager.signinRedirect({}).catch(() => { });
 
 const isAuthenticated = (): boolean => {
     const userSettings = getUserSettings();
@@ -22,6 +20,6 @@ const isAuthenticated = (): boolean => {
 };
 
 export {
-    signinRedirect,
+    login,
     isAuthenticated,
 };

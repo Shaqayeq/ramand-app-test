@@ -5,7 +5,8 @@ import "./header.css";
 
 const HeaderPage = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const searchTerm  = useSelector((state: RootState) => state.gridReducer.searchTerm);
+    const {searchTerm, totalPage }  = useSelector((state: RootState) => state.gridReducer);
+    const username   = useSelector((state: RootState) => state.userReducer.username);
 
     const changeSearchTerm = (term: string) => {
         dispatch(changeSearchTermAction(term));
@@ -13,6 +14,8 @@ const HeaderPage = () => {
 
     return (
         <div className="header">
+            <span className="total-span"> تعداد ردیف : {totalPage} </span>
+            <span className="total-span"> کاربر {username} به سیستم خوش آمدید </span>
             <input 
                 type="text" 
                 className="search-box" 
